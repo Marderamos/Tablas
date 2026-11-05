@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IVØ — The Future of Skateboarding</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivo: {
+              red: '#E3262B',
+              gold: '#C9B27A',
+              ink: '#0B0B0B',
+            }
+          },
+          fontFamily: {
+            wide: ['Archivo', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="script.js" defer></script>
+</head>
+
+<body class="bg-ivo-ink font-sans antialiased text-white">
+
+  <main id="hero" class="relative h-screen min-h-[600px] w-full overflow-hidden bg-ivo-ink cursor-pointer select-none">
+
+    <video
+      id="heroVideo"
+      class="hero-video absolute inset-0 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    >
+      <source src="assets/video.mp4" type="video/mp4">
+    </video>
+
+    <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/30 via-transparent to-black/70"></div>
+
+
+    <header class="absolute inset-x-0 top-0 z-20 flex items-start justify-between px-6 pt-8 md:px-[7%] md:pt-20">
+
+      <button
+        id="openMenu"
+        type="button"
+        class="f-wide-thin text-left text-sm uppercase leading-[1.15] tracking-wide text-ivo-red transition hover:opacity-60 md:text-xl"
+        aria-controls="menu"
+        aria-expanded="false"
+      >
+        Comprar<br>Ahora
+      </button>
+
+      <div class="flex items-start gap-6 md:gap-10">
+
+        <p class="text-right text-xs font-extrabold uppercase leading-snug text-white md:text-left md:text-lg">
+          The future of<br>skateboarding
+        </p>
+
+        <button
+          id="cartBtn"
+          type="button"
+          class="relative text-white transition hover:scale-110"
+          aria-label="Carrito"
+        >
+          <svg class="h-8 w-8 md:h-11 md:w-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1">
+            <path d="M5 8h14l-1 13H6L5 8Z"/>
+            <path d="M9 10V6a3 3 0 0 1 6 0v4"/>
+          </svg>
+
+          <span id="cartCount" class="absolute -right-2 -top-2 hidden h-5 min-w-5 items-center justify-center rounded-full bg-ivo-red px-1 text-[10px] font-bold">
+            0
+          </span>
+        </button>
+
+      </div>
+    </header>
+
+
+    <button
+      id="playBtn"
+      type="button"
+      class="play-btn absolute left-1/2 top-1/2 z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/80 text-white transition hover:scale-110 md:h-20 md:w-20"
+      aria-label="Reproducir video"
+    >
+      <svg id="iconPlay" class="ml-1 h-6 w-6 md:h-8 md:w-8" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7 4.5v15l13-7.5-13-7.5Z"/>
+      </svg>
+
+      <svg id="iconPause" class="hidden h-6 w-6 md:h-8 md:w-8" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+      </svg>
+    </button>
+
+
+    <h1 class="f-wide-logo absolute bottom-24 left-6 z-10 leading-none text-white md:bottom-[14%] md:left-[13%] text-[clamp(4.5rem,13vw,13rem)]">
+      IVØ
+    </h1>
+
+    <div class="f-wide-black absolute bottom-48 right-6 z-10 text-right uppercase text-ivo-red md:bottom-[17%] md:right-[13%]">
+      <p class="text-xs tracking-[0.2em] md:text-lg">
+        4 ruedas
+      </p>
+      <p class="text-3xl tracking-tight md:text-6xl">
+        1 DESTINO
+      </p>
+    </div>
+
+    <div class="absolute bottom-6 left-6 z-10 text-[9px] uppercase tracking-[0.3em] text-white/70 md:left-[7%]">
+      IVØ SKATEBOARDING — EST. 2026
+    </div>
+
+  </main>
+
+
+  <div
+    id="menu"
+    class="menu fixed inset-0 z-50 pointer-events-none"
+    aria-hidden="true"
+  >
+
+    <div
+      id="menuBackdrop"
+      class="menu-backdrop absolute inset-0 bg-black/75 backdrop-blur-sm"
+    ></div>
+
+    <nav
+      id="menuPanel"
+      class="menu-panel absolute left-0 top-0 flex h-full w-full max-w-[520px] flex-col bg-ivo-ink px-8 py-8 md:px-14 md:py-12"
+      aria-label="Menú principal"
+      aria-modal="true"
+      role="dialog"
+    >
+
+      <div class="flex items-center justify-between border-b border-white/20 pb-8">
+
+        <a href="#" class="f-wide-logo text-4xl tracking-tight text-white">
+          IVØ<span class="text-ivo-red">.</span>
+        </a>
+
+        <button
+          id="closeMenu"
+          type="button"
+          class="flex h-11 w-11 items-center justify-center text-white transition hover:rotate-90 hover:text-ivo-red"
+          aria-label="Cerrar menú"
+        >
+          <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="m18 6-12 12M6 6l12 12"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="flex flex-1 flex-col justify-center gap-5 py-10">
+
+        <p class="mb-4 text-[10px] font-bold uppercase tracking-[0.35em] text-white/40">
+          Explora nuestra colección
+        </p>
+
+        <a href="#ropa" class="menu-link menu-item" style="--i:0">
+          <span>01</span>
+          <span>Ropa</span>
+          <span>↗</span>
+        </a>
+
+        <a href="#calzado" class="menu-link menu-item" style="--i:1">
+          <span>02</span>
+          <span>Calzado</span>
+          <span>↗</span>
+        </a>
+
+        <a href="#tablas" class="menu-link menu-item" style="--i:2">
+          <span>03</span>
+          <span>Tablas</span>
+          <span>↗</span>
+        </a>
+
+        <a href="#ruedas" class="menu-link menu-item" style="--i:3">
+          <span>04</span>
+          <span>Ruedas</span>
+          <span>↗</span>
+        </a>
+
+        <a href="#ejes" class="menu-link menu-item" style="--i:4">
+          <span>05</span>
+          <span>Ejes</span>
+          <span>↗</span>
+        </a>
+
+        <a href="#otros" class="menu-link menu-item" style="--i:5">
+          <span>06</span>
+          <span>Otros</span>
+          <span>↗</span>
+        </a>
+
+      </div>
+
+      <div class="border-t border-white/20 pt-6">
+
+        <p class="text-[10px] uppercase tracking-[0.3em] text-white/40">
+          The future of skateboarding.
+        </p>
+
+        <p class="mt-2 text-xs text-ivo-red">
+          IVØ © 2026
+        </p>
+
+      </div>
+
+    </nav>
+
+  </div>
+
+</body>
+</html>
