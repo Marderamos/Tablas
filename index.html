@@ -229,6 +229,77 @@
     </nav>
 
   </div>
+  <section
+    id="profileCard"
+    class="profile-card absolute right-6 top-24 z-30 hidden md:right-[7%]"
+    aria-live="polite"
+  >
+    <img id="profilePhoto" src="" alt="Fotografía del usuario">
+
+    <div class="min-w-0">
+      <p id="profileName" class="truncate text-sm font-bold"></p>
+      <p id="profileRole" class="text-xs uppercase tracking-wider text-ivo-red"></p>
+      <p id="profileEmail" class="truncate text-xs text-white/60"></p>
+    </div>
+
+    <button id="logoutBtn" type="button">
+      Salir
+    </button>
+  </section>
+  
+  <div id="loginModal" class="login-modal is-hidden" aria-hidden="true">
+    <div class="login-backdrop"></div>
+    <section class="login-box" role="dialog" aria-modal="true">
+      <p>IVØ Skateboarding</p>
+      <h2>INICIAR SESIÓN</h2>
+
+      <p>Identifícate para entrar a nuestra comunidad.</p>
+
+      <form id="loginForm">
+
+        <label for="username">Nombre de usuario</label>
+
+        <input
+          id="username"
+          name="usuario"
+          type="text"
+          placeholder="Ej. palomera"
+          required
+        >
+
+        <label for="email">Correo electrónico</label>
+
+        <input
+          id="email"
+          name="correo"
+          type="email"
+          placeholder="tucorreo@ejemplo.com"
+          required
+        >
+
+        <label for="generatedPassword">Contraseña generada</label>
+
+        <input
+          id="generatedPassword"
+          type="text"
+          readonly
+          placeholder="Se generará al escribir tu usuario"
+        >
+
+        <p id="passwordHint">
+          Se agrega automáticamente “123” a tu nombre de usuario.
+        </p>
+
+        <p id="loginMessage"></p>
+
+        <button id="loginSubmit" type="submit">
+          ENTRAR A IVØ
+        </button>
+
+      </form>
+
+    </section>
+  </div>
 
 </body>
 </html>
